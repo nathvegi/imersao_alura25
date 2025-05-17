@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QnBrHB6y1PXzuUjtzIRS7HUFsYJBxWJs?usp=sharing)
-![Project Demo](link\_para\_um\_gif\_ou\_screenshot\_do\_projeto\_em\_acao\_aqui)
+Vídeo Demo: https://share.vidyard.com/watch/5qj43oUDdS3n1U6MXoZGHm
 
 Este projeto inovador apresenta um sistema de três agentes de Inteligência Artificial, alimentados pela poderosa API Gemini, projetado para revolucionar a forma como as descrições de produtos são criadas e otimizadas para o e-commerce. Meu objetivo é fornecer descrições não apenas informativas, mas também altamente atraentes para os clientes e perfeitamente alinhadas com as melhores práticas de SEO, impulsionando a visibilidade e as vendas online.
 
