@@ -133,7 +133,7 @@ additional_text = st.text_area("Informações adicionais sobre o produto (opcion
 if uploaded_file is not None:
     image_bytes = uploaded_file.read()
     image = Image.open(io.BytesIO(image_bytes))
-    st.image(image, caption="Imagem do Produto Carregada.", use_column_width=True)
+    st.image(image, caption="Imagem do Produto Carregada.", use_container_width=True)
 
     if st.button("Gerar Descrição"):
         with st.spinner("Analisando a imagem..."):
