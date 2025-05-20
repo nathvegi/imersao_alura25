@@ -1,0 +1,5 @@
+streamlit
+google-generativeai
+Pillow
+google-cloud-aiplatform # Esta pode ser necessária para ADK, se for a biblioteca correta.
+                        # Se der erro no deploy, você pode tentar remover ou pesquisar a correta.
