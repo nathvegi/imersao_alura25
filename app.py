@@ -5,6 +5,15 @@ from PIL import Image
 import io
 import os
 
+# --- CONFIGURAÇÃO DA PÁGINA (DEVE SER A PRIMEIRA CHAMADA DO ST. NO SCRIPT) ---
+st.set_page_config(
+    page_title="DescreveAI - Transforme imagens em vendas com inteligência artificial",
+    page_icon="assets/favicon.png", # Altere para o caminho e nome do seu arquivo favicon!
+    layout="centered", # ou "wide" para ocupar mais espaço na tela
+    initial_sidebar_state="auto" # "auto", "expanded", ou "collapsed"
+)
+# --- FIM DA CONFIGURAÇÃO DA PÁGINA ---
+
 # Configuração da API KEY do Google Gemini (use st.secrets) - PRIMEIRO E ÚNICO BLOCO DE INICIALIZAÇÃO
 try:
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
@@ -42,6 +51,16 @@ except Exception as e:
     st.sidebar.error("Status do Sistema: 🔴 Offline. Por favor, tente novamente mais tarde. Caso o erro persista, entre em contato com o suporte: natvegi@gmail.com")
     st.sidebar.info(f"Detalhes do erro: {e}") # Opcional: manter detalhes do erro para debug, mas pode ser removido em produção
     st.stop() # Interrompe a execução se a chave não for carregada
+
+    # --- INTERFACE STREAMLIT PRINCIPAL ---
+    # LINHA DO TÍTULO REMOVIDA/COMENTADA
+    # st.title("DescreveAI: Descrições de Produtos Inteligentes") 
+
+    # --- IMAGEM DA LOGO NO CORPO PRINCIPAL ---
+    # Certifique-se de que o caminho para a imagem esteja correto!
+    st.image("assets/logo_descreveai.png", use_column_width=True) 
+    st.markdown("---") # Adiciona uma linha divisória abaixo da logo para separar o conteúdo
+    # --- FIM DA IMAGEM DA LOGO NO CORPO PRINCIPAL ---
 
 # Função utilitária para chamar o modelo Gemini
 def call_gemini_model(model: genai.GenerativeModel, image_bytes: Union[bytes, None] = None, message_text: Union[str, None] = None) -> str:
@@ -151,8 +170,8 @@ def agente_otimizador_redator(descricao_preliminar):
     # st.info(f"Agente Otimizador: Descrição otimizada (primeiros 50 chars): '{descricao_otimizada[:50] if descricao_otimizada else 'Vazio'}'") # Linha de debug comentada
     return descricao_otimizada
 
-# Interface Streamlit
-st.title("DescreveAI: Descrições de Produtos Inteligentes")
+# Interface Streamlit Principal
+# st.title("DescreveAI: Descrições de Produtos Inteligentes")
 
 # Esta seção foi movida e integrada ao primeiro bloco de inicialização da API acima
 # with st.sidebar:
@@ -203,7 +222,7 @@ if uploaded_file is not None:
             # st.info(f"DEBUG: Valor de descricao_final ANTES DO st.write: '{descricao_final[:50] if descricao_final else 'Vazio'}'") # Linha de debug comentada
             # EXIBIR O RESULTADO DO AGENTE 3 (A DESCRIÇÃO FINAL)
             if descricao_final:
-                st.subheader("3. Descrição Otimizada para SEO e Vendas:")
+                st.subheader("3. Descrição Final: Otimizada para SEO e Vendas:")
                 # Prova dos 9 (ainda mantida para segurança, mas você pode remover essa verificação agora)
                 if "AIzaSy" in descricao_final and "GOOGLE_API_KEY" in descricao_final:
                     st.error("ERRO GRAVE: A API Key está sendo exibida na descrição final.")
