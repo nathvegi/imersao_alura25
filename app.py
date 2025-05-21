@@ -162,7 +162,8 @@ def agente_otimizador_redator(descricao_preliminar):
         2. Pense em palavras-chave relevantes que os clientes usariam para buscar este tipo de produto online.
         3. Incorpore naturalmente essas palavras-chave ao longo da descrição, especialmente no início.
         4. Use linguagem persuasiva focada nos benefícios para o cliente. Destaque como o produto resolve um problema ou atende a uma necessidade.
-        5. Mantenha a descrição concisa e fácil de ler. Não use bullet points e gere frases curtas se apropriado.
+        5. Não descreva o conteúdo em si da estampa, pois fica parecendo uma descrição para cegos.
+        6. Mantenha a descrição concisa e fácil de ler. Não use bullet points e gere frases curtas se apropriado.
 
         Crie a descrição otimizada para SEO e vendas, mas não precisa criar palavras chave, pois você não é um agente especialista nesse tipo de criação.
             """
