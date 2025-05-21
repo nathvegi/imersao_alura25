@@ -56,9 +56,16 @@ except Exception as e:
     # LINHA DO TÍTULO REMOVIDA/COMENTADA
     # st.title("DescreveAI: Descrições de Produtos Inteligentes") 
 
-# --- IMAGEM DA LOGO NO CORPO PRINCIPAL ---
-# Certifique-se de que o caminho para a imagem esteja correto!
-st.image("assets/logo_descreveai.png", width=550) 
+# --- IMAGEM DA LOGO NO CORPO PRINCIPAL (CENTRALIZADA) ---
+
+# Crie três colunas: a primeira e a última vazias, a do meio para a imagem
+# A proporção [1, 2, 1] é um bom ponto de partida para centralizar.
+# A coluna do meio (2) terá o dobro do tamanho das laterais (1).
+col1, col2, col3 = st.columns([1, 2, 1]) 
+
+with col2: # Todo o conteúdo dentro deste 'with' será colocado na coluna do meio
+    st.image("assets/logo_descreveai.png", width=550) # Mantenha seu 'width=550' aqui ou ajuste conforme desejar.
+    
 st.markdown("---") # Adiciona uma linha divisória abaixo da logo para separar o conteúdo
 # --- FIM DA IMAGEM DA LOGO NO CORPO PRINCIPAL ---
 
