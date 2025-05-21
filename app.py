@@ -28,8 +28,8 @@ try:
     )
     # --- FIM DAS MENSAGENS DE BOAS-VINDAS ---
 
-    # st.sidebar.success("API Key carregada com sucesso!") # REMOVIDO/COMENTADO: Mensagem de depuração
-    # st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # REMOVIDO/COMENTADO: Depuração de comprimento
+    # st.sidebar.success("API Key carregada com sucesso!") # Linha de debug comentada
+    # st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # Linha de debug comentada
 
 except Exception as e:
     st.sidebar.error(f"Erro ao inicializar o sistema: 😲 Algo de errado não está certo... Por favor, entre em contato com o suporte: natvegi@gmail.com 😘 . Detalhes: {e}")
@@ -80,9 +80,9 @@ def agente_imagem(imagem_produto_bytes):
         Você precisa considerar se o modelo é adulto ou infantil, feminino ou masculino para informar que o produto é adulto ou infantil, feminino ou masculino.
         """
     )
-    st.info("Agente Imagem: Chamando o modelo para análise da imagem...")
+    # st.info("Agente Imagem: Chamando o modelo para análise da imagem...") # Linha de debug comentada
     caracteristicas_visuais = call_gemini_model(analista_imagem_model, image_bytes=imagem_produto_bytes, message_text="Por favor, descreva esta imagem:")
-    st.info(f"Agente Imagem: Características visuais obtidas (primeiros 50 chars): '{caracteristicas_visuais[:50] if caracteristicas_visuais else 'Vazio'}'")
+    # st.info(f"Agente Imagem: Características visuais obtidas (primeiros 50 chars): '{caracteristicas_visuais[:50] if caracteristicas_visuais else 'Vazio'}'") # Linha de debug comentada
     return caracteristicas_visuais
 
 #######################################################
@@ -107,9 +107,9 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
 
     Por favor, crie uma descrição enriquecida do produto com base nessas informações.
     """
-    st.info("Agente Analista Texto: Chamando o modelo para enriquecimento...")
+    # st.info("Agente Analista Texto: Chamando o modelo para enriquecimento...") # Linha de debug comentada
     descricao_enriquecida = call_gemini_model(analista_texto_model, message_text=entrada_do_agente_analista_texto)
-    st.info(f"Agente Analista Texto: Descrição enriquecida (primeiros 50 chars): '{descricao_enriquecida[:50] if descricao_enriquecida else 'Vazio'}'")
+    # st.info(f"Agente Analista Texto: Descrição enriquecida (primeiros 50 chars): '{descricao_enriquecida[:50] if descricao_enriquecida else 'Vazio'}'") # Linha de debug comentada
     return descricao_enriquecida
 
 ################################################################
@@ -138,9 +138,9 @@ def agente_otimizador_redator(descricao_preliminar):
 
     Por favor, otimize esta descrição para SEO e vendas online.
     """
-    st.info("Agente Otimizador: Chamando o modelo para otimização...")
+    # st.info("Agente Otimizador: Chamando o modelo para otimização...") # Linha de debug comentada
     descricao_otimizada = call_gemini_model(otimizador_redator_model, message_text=entrada_do_agente_otimizador_redator)
-    st.info(f"Agente Otimizador: Descrição otimizada (primeiros 50 chars): '{descricao_otimizada[:50] if descricao_otimizada else 'Vazio'}'")
+    # st.info(f"Agente Otimizador: Descrição otimizada (primeiros 50 chars): '{descricao_otimizada[:50] if descricao_otimizada else 'Vazio'}'") # Linha de debug comentada
     return descricao_otimizada
 
 # Interface Streamlit
@@ -161,47 +161,53 @@ if uploaded_file is not None:
     st.image(image, caption="Imagem do Produto Carregada.", use_container_width=True)
 
     if st.button("Gerar Descrição"):
-        st.info("Iniciando a geração da descrição...")
+        st.info("Iniciando a geração da descrição...") # Esta é uma mensagem de progresso, não de debug, pode manter se quiser
 
         descricao_final = "" # Inicializa com string vazia
 
         # CHAMADA DO AGENTE 1
         with st.spinner("Analisando a imagem..."):
             imagens_analisadas = agente_imagem(image_bytes)
-            st.info(f"DEBUG: Valor de imagens_analisadas: '{imagens_analisadas[:50] if imagens_analisadas else 'Vazio'}'")
-            if not imagens_analisadas or "Erro" in imagens_analisadas:
+            # st.info(f"DEBUG: Valor de imagens_analisadas: '{imagens_analisadas[:50] if imagens_analisadas else 'Vazio'}'") # Linha de debug comentada
+            # EXIBIR O RESULTADO DO AGENTE 1
+            if imagens_analisadas:
+                st.subheader("1. Análise da Imagem:")
+                st.write(imagens_analisadas)
+            else:
                 st.error("Falha na análise da imagem. Descrição não gerada.")
                 st.stop()
 
         # CHAMADA DO AGENTE 2
         with st.spinner("Enriquecendo a descrição..."):
             descricao_imagem = agente_analista_texto(imagens_analisadas, additional_text)
-            st.info(f"DEBUG: Valor de descricao_imagem: '{descricao_imagem[:50] if descricao_imagem else 'Vazio'}'")
-            if not descricao_imagem or "Erro" in descricao_imagem:
+            # st.info(f"DEBUG: Valor de descricao_imagem: '{descricao_imagem[:50] if descricao_imagem else 'Vazio'}'") # Linha de debug comentada
+            # EXIBIR O RESULTADO DO AGENTE 2
+            if descricao_imagem:
+                st.subheader("2. Descrição Enriquecida (com informações textuais):")
+                st.write(descricao_imagem)
+            else:
                 st.error("Falha ao enriquecer a descrição. Descrição não gerada.")
                 st.stop()
 
         # CHAMADA DO AGENTE 3
         with st.spinner("Otimizando para SEO..."):
             descricao_final = agente_otimizador_redator(descricao_imagem)
-            st.info(f"DEBUG: Valor de descricao_final ANTES DO st.write: '{descricao_final[:50] if descricao_final else 'Vazio'}'")
-            if not descricao_final or "Erro" in descricao_final:
+            # st.info(f"DEBUG: Valor de descricao_final ANTES DO st.write: '{descricao_final[:50] if descricao_final else 'Vazio'}'") # Linha de debug comentada
+            # EXIBIR O RESULTADO DO AGENTE 3 (A DESCRIÇÃO FINAL)
+            if descricao_final:
+                st.subheader("3. Descrição Otimizada para SEO e Vendas:")
+                # Prova dos 9 (ainda mantida para segurança, mas você pode remover essa verificação agora)
+                if "AIzaSy" in descricao_final and "GOOGLE_API_KEY" in descricao_final:
+                    st.error("ERRO GRAVE: A API Key está sendo exibida na descrição final.")
+                    st.code(f"Conteúdo da descricao_final: {descricao_final}")
+                    st.write("Isso indica um problema de fluxo de dados ou atribuição. Verifique logs do Streamlit Cloud.")
+                else:
+                    st.write(descricao_final) # Exibe a descrição otimizada
+            else:
                 st.error("Falha ao otimizar a descrição para SEO. Descrição não gerada.")
                 st.stop()
 
         st.success("Processo de geração de descrição concluído!")
-
-        st.subheader("Descrição Final Gerada:")
-        # AGORA, A PROVA DOS 9:
-        if "AIzaSy" in descricao_final and "GOOGLE_API_KEY" in descricao_final:
-            st.error("ERRO GRAVE: A API Key está sendo exibida na descrição final.")
-            st.code(f"Conteúdo da descricao_final: {descricao_final}")
-            st.write("Isso indica um problema de fluxo de dados ou atribuição. Verifique logs do Streamlit Cloud.")
-        elif descricao_final:
-            st.write(descricao_final)
-        else:
-            st.warning("Nenhuma descrição final foi gerada.")
-
 
 else:
     st.info("Por favor, carregue uma imagem do produto para começar.")
