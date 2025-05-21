@@ -56,11 +56,11 @@ except Exception as e:
     # LINHA DO TÍTULO REMOVIDA/COMENTADA
     # st.title("DescreveAI: Descrições de Produtos Inteligentes") 
 
-    # --- IMAGEM DA LOGO NO CORPO PRINCIPAL ---
-    # Certifique-se de que o caminho para a imagem esteja correto!
-    st.image("assets/logo_descreveai.png", use_column_width=True) 
-    st.markdown("---") # Adiciona uma linha divisória abaixo da logo para separar o conteúdo
-    # --- FIM DA IMAGEM DA LOGO NO CORPO PRINCIPAL ---
+# --- IMAGEM DA LOGO NO CORPO PRINCIPAL ---
+# Certifique-se de que o caminho para a imagem esteja correto!
+st.image("assets/logo_descreveai.png", use_column_width=True) 
+st.markdown("---") # Adiciona uma linha divisória abaixo da logo para separar o conteúdo
+# --- FIM DA IMAGEM DA LOGO NO CORPO PRINCIPAL ---
 
 # Função utilitária para chamar o modelo Gemini
 def call_gemini_model(model: genai.GenerativeModel, image_bytes: Union[bytes, None] = None, message_text: Union[str, None] = None) -> str:
