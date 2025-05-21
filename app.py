@@ -11,28 +11,36 @@ try:
     genai.configure(api_key=GOOGLE_API_KEY)
     
     # --- MENSAGENS DE BOAS-VINDAS E INSTRUÇÕES ---
-    st.sidebar.markdown("### Boas-vindas ao DescreveAI! 👋")
+    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.5! 👋")
     st.sidebar.markdown(
         """
-        Olá! Eu sou seu assistente inteligente para criar descrições de produtos impactantes. 
-        Com a ajuda da inteligência artificial do Google Gemini, transformo imagens e informações 
-        simples em textos otimizados para vendas e SEO.
+        Dê vida aos **produtos para o seu e-commerce**! Sou seu assistente inteligente, 
+        pronto para transformar as imagens dos seus produtos em **descrições impactantes**, 
+        totalmente otimizadas para vendas e visibilidade em mecanismos de busca (SEO). 
+        Tudo isso com o poder da inteligência artificial do Google Gemini.
 
-        **Como usar:**
-        1.  **Carregue a imagem** do seu produto no campo principal.
-        2.  (Opcional) Adicione **informações textuais adicionais** sobre o produto (material, marca, público-alvo, etc.).
-        3.  Clique em **"Gerar Descrição"** e veja a mágica acontecer! 🧙🏼‍♂️
+        **Como é fácil usar:**
+        1.  **Carregue a imagem** (aquela que você já usa no seu e-commerce!) clara e de boa qualidade do seu produto.
+        2.  (Opcional) Adicione **detalhes adicionais** importantes sobre o produto (material, marca, público-alvo, funcionalidades, etc.).
+        3.  Clique em **"Gerar Descrição"** e prepare-se para a mágica! 🧙🏼‍♂️
 
-        É simples e rápido! Comece agora mesmo.
+        Simplifique sua rotina e impulsione suas vendas. Comece agora!
         """
     )
+    st.sidebar.markdown("---") # Adiciona uma linha divisória para separar
+    st.sidebar.markdown("Created by **NathVegi**") # Sua assinatura!    
     # --- FIM DAS MENSAGENS DE BOAS-VINDAS ---
+
+    # MENSAGEM DE STATUS DO SISTEMA QUANDO ONLINE
+    st.sidebar.success("Status do Sistema: 🟢 Online") # Status do Sistema
 
     # st.sidebar.success("API Key carregada com sucesso!") # Linha de debug comentada
     # st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # Linha de debug comentada
 
 except Exception as e:
-    st.sidebar.error(f"Erro ao inicializar o sistema: 😲 Algo de errado não está certo... Por favor, entre em contato com o suporte: natvegi@gmail.com 😘 . Detalhes: {e}")
+    # MENSAGEM DE STATUS DO SISTEMA QUANDO OFFLINE
+    st.sidebar.error("Status do Sistema: 🔴 Offline. Por favor, tente novamente mais tarde. Caso o erro persista, entre em contato com o suporte: natvegi@gmail.com")
+    st.sidebar.info(f"Detalhes do erro: {e}") # Opcional: manter detalhes do erro para debug, mas pode ser removido em produção
     st.stop() # Interrompe a execução se a chave não for carregada
 
 # Função utilitária para chamar o modelo Gemini
