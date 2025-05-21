@@ -164,7 +164,7 @@ def agente_otimizador_redator(descricao_preliminar):
         4. Use linguagem persuasiva focada nos benefícios para o cliente. Destaque como o produto resolve um problema ou atende a uma necessidade.
         5. Mantenha a descrição concisa e fácil de ler. Não use bullet points e gere frases curtas se apropriado.
 
-        Crie a descrição otimizada para SEO e vendas.
+        Crie a descrição otimizada para SEO e vendas, mas não precisa criar palavras chave, pois você não é um agente especialista nesse tipo de criação.
             """
     )
     entrada_do_agente_otimizador_redator = f"""
