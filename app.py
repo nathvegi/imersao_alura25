@@ -9,8 +9,43 @@ import os
 try:
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
     genai.configure(api_key=GOOGLE_API_KEY)
+ 
+    # --- MENSAGENS DE BOAS-VINDAS E INSTRUÇÕES ---
+    st.sidebar.markdown("### Boas-vindas ao DescreveAI! 👋")
+    st.sidebar.markdown(
+        """
+        Olá! Eu sou seu assistente inteligente para criar descrições de produtos impactantes. 
+        Com a ajuda da inteligência artificial do Google Gemini, transformo imagens e informações 
+        simples em textos otimizados para vendas e SEO.
+
+        **Como usar:**
+        1.  **Carregue a imagem** do seu produto no campo principal.
+        2.  (Opcional) Adicione **informações textuais adicionais** sobre o produto (material, marca, público-alvo, etc.).
+        3.  Clique em **"Gerar Descrição"** e veja a mágica acontecer! 🧙🏼‍♂️
+
+        É simples e rápido! Comece agora mesmo.
+        """
+    )
+    # --- FIM DAS MENSAGENS DE BOAS-VINDAS ---
+
+    # st.sidebar.success("API Key carregada com sucesso!") # Remover ou comentar esta linha
+    # st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # Remover ou comentar esta linha (depuração)
+
+except Exception as e:
+    st.sidebar.error(f"Erro ao inicializar o sistema: 😲 Algo de errado não está certo... Por favor, entre em contato com o suporte: natvegi@gmail.com 😘 . Detalhes: {e}") # Mensagem de erro mais amigável
+    st.stop() # Interrompe a execução se a chave não for carregada
+
+# Interface Streamlit
+st.title("DescreveAI: Descrições de Produtos Inteligentes")
+
+# Configuração da chave de API usando st.secrets (esta parte já está no sidebar acima)
+with st.sidebar:
+    st.subheader("Configuração da API")
+    # Remover ou comentar esta linha se você já adicionou a mensagem de boas-vindas na parte de cima
+    # st.info("Certifique-se de ter sua `GOOGLE_API_KEY` configurada em `.streamlit/secrets.toml`")
+    
     st.sidebar.success("API Key carregada com sucesso!") # Feedback visual
-    st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # Depuração de comprimento
+    # st.sidebar.info(f"Comprimento da API Key: {len(GOOGLE_API_KEY) if GOOGLE_API_KEY else 0}") # Depuração de comprimento
 except Exception as e:
     st.sidebar.error(f"Erro ao carregar API Key: {e}") # Feedback visual
     st.stop() # Interrompe a execução se a chave não for carregada
@@ -73,7 +108,7 @@ def agente_imagem(imagem_produto_bytes):
 #######################################################
 def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
     analista_texto_model = genai.GenerativeModel(
-        model_name="gemini-pro", # Use "gemini-pro" ou "gemini-1.5-flash" para texto
+        model_name="gemini-1.5-flash", # Use "gemini-pro" ou "gemini-1.5-flash" para texto
         generation_config=genai.GenerationConfig(temperature=0.7),
         system_instruction="""
         Você é um analista de imagem enriquecido. Sua tarefa é combinar as características visuais do produto,
@@ -100,7 +135,7 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
 ################################################################
 def agente_otimizador_redator(descricao_preliminar):
     otimizador_redator_model = genai.GenerativeModel(
-        model_name="gemini-pro", # Use "gemini-pro" ou "gemini-1.5-flash" para texto
+        model_name="gemini-1.5-flash", # Use "gemini-pro" ou "gemini-1.5-flash" para texto
         generation_config=genai.GenerationConfig(temperature=0.8),
         system_instruction="""
         Você é um Analista Otimizador de SEO e Redator de Descrições especializado em e-commerce.
