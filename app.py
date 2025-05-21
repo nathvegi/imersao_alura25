@@ -58,7 +58,7 @@ except Exception as e:
 
 # --- IMAGEM DA LOGO NO CORPO PRINCIPAL ---
 # Certifique-se de que o caminho para a imagem esteja correto!
-st.image("assets/logo_descreveai.png", use_container_width=True) 
+st.image("assets/logo_descreveai.png", width=550) 
 st.markdown("---") # Adiciona uma linha divisória abaixo da logo para separar o conteúdo
 # --- FIM DA IMAGEM DA LOGO NO CORPO PRINCIPAL ---
 
