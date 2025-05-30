@@ -20,7 +20,7 @@ try:
     genai.configure(api_key=GOOGLE_API_KEY)
     
     # --- MENSAGENS DE BOAS-VINDAS E INSTRUÇÕES ---
-    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.5! 👋")
+    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.6! 👋")
     st.sidebar.markdown(
         """
         Dê vida aos **produtos para o seu e-commerce**! Sou seu assistente inteligente, 
