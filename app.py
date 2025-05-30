@@ -164,7 +164,7 @@ def agente_otimizador_redator(descricao_preliminar):
         2 - Identificação de Palavras-Chave: Pense em termos de busca de cauda longa e curta que clientes reais utilizariam para encontrar este produto, tanto em motores de busca (Google, etc.) quanto dentro do e-commerce Useveggi.
         3 - Incorporação Estratégica: Incorpore essas palavras-chave de forma natural e fluida ao longo da descrição, priorizando a inserção nas primeiras frases e no título (se aplicável).
         4 - Foco em Benefícios e Soluções: Utilize linguagem persuasiva e focada nos benefícios para o cliente. Destaque como o produto resolve problemas, atende necessidades ou agrega valor à vida do consumidor.
-        5 - Evitar Descrição Literal de Estampas: Não descreva o conteúdo visual explícito de estampas (personagens, desenhos, etc.), a menos que seja crucial para identificar o produto sem ver a imagem. A descrição deve complementar a imagem, não substituí-la para quem não pode vê-la.
+        5 - NUNCA FAÇA uma descrição Literal de Estampas: A descrição deve complementar a imagem, não substituí-la para quem não pode vê-la.
         6 - Concisão e Legibilidade: Mantenha a descrição concisa, fácil de ler e atraente. Evite bullet points. Priorize frases curtas e diretas, quando apropriado.
         7 - Restrição de Linguagem Infantil: Em produtos infantis, NÃO utilize expressões como "para a pequena", "para o pequeno", "para sua pequena", "para seu pequeno" ao se referir a crianças. Mantenha uma linguagem neutra e inclusiva.
         
