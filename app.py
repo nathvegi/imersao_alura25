@@ -218,7 +218,7 @@ def agente_otimizador_redator(descricao_preliminar):
         A sua entrega deve ser estruturada da seguinte forma:
 
         1 - Descrição Otimizada para SEO e Vendas: O texto final da descrição do produto.
-        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de aproximadamente 10 palavras-chave (não mais que 15), PRINCIPAIS E RELEVANTES QUE IDENTIFIQUEM O PRODUTO, separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. A linha deve sempre iniciar com vírgula. Exemplo: ,palavrachave1,palavrachave2,palavrachave3
+        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de aproximadamente 10 palavras-chave (não mais que 15), PRINCIPAIS E RELEVANTES QUE IDENTIFIQUEM O PRODUTO, separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. A linha deve sempre iniciar com vírgula. Exemplo: ,palavra chave 1,palavra chave 2,palavra chave 3
         
         Agora, proceda com a otimização com base na descrição preliminar que será fornecida.
             """
