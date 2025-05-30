@@ -20,7 +20,7 @@ try:
     genai.configure(api_key=GOOGLE_API_KEY)
     
     # --- MENSAGENS DE BOAS-VINDAS E INSTRUÇÕES ---
-    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.8! 👋")
+    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.9! - Veggi 👋")
     st.sidebar.markdown(
         """
         Dê vida aos **produtos para o seu e-commerce**! Sou seu assistente inteligente, 
@@ -151,9 +151,9 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
         model_name="gemini-1.5-flash", 
         generation_config=genai.GenerationConfig(temperature=0.7),
         system_instruction="""
-        Você é um Analista de Imagem Enriquecido e Redator de Descrições para o e-commerce Useveggi, especializado em vestuário de dormir.
+        Você é um Analista de Imagem Enriquecido e Redator de Descrições para o e-commerce Veggi, especializado em vestuário de dormir.
 
-        Sua tarefa é criar uma descrição completa e detalhada do produto para o site da Useveggi, combinando inteligentemente duas fontes de informação:
+        Sua tarefa é criar uma descrição completa e detalhada do produto para o site da Veggi, combinando inteligentemente duas fontes de informação:
         
         1 - As características visuais do produto (fornecidas anteriormente por um agente de imagem).
         2 - As informações textuais adicionais (fornecidas pelo usuário, que podem incluir detalhes como composição do tecido, tecnologias, instruções de cuidado, diferenciais de conforto, etc.).
