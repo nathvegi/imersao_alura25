@@ -20,7 +20,7 @@ try:
     genai.configure(api_key=GOOGLE_API_KEY)
     
     # --- MENSAGENS DE BOAS-VINDAS E INSTRUÇÕES ---
-    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.7! 👋")
+    st.sidebar.markdown("### Boas-vindas ao DescreveAI - v 1.0.8! 👋")
     st.sidebar.markdown(
         """
         Dê vida aos **produtos para o seu e-commerce**! Sou seu assistente inteligente, 
@@ -128,7 +128,7 @@ def agente_imagem(imagem_produto_bytes):
             - Não descreva o que o modelo está calçando. O foco é exclusivamente na roupa de dormir.
             - Evite descrições subjetivas ou opinativas (ex: "bonito", "confortável", "elegante").
             - Mantenha a descrição objetiva e factual.
-            - Não descreva bordados, inscrições das estampas e outros detalhes mais técnicos se baseando na imagem, pois esta pode aparentar uma coisa que não é (quando houverem esses detalhes, o usuário vai informar no próximo agente que é o Analista de Imagem Enriquecido e Redator de Descrições.
+            - NÃO DESCREVA EM HIPÓTESE ALGUMA: bordados E inscrições das estampas.
             - A descrição deve ser concisa e direta, listando as características principais de forma clara e organizada.
 
         Exemplo de saída esperada:
@@ -166,7 +166,7 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
         - Relevância para Vestuário de Dormir: Mantenha a descrição focada nos atributos e benefícios mais importantes para produtos de dormir (ex: conforto, respirabilidade, durabilidade, caimento, sensibilidade da pele, etc.).
 
         Exclusões:
-        - Não descreva bordados, inscrições das estampas e outros detalhes mais técnicos baseando em suposições. Este tipo de detalhe será fornecido EXCLUSIVAMENTE pelo usuário nas informações textuais adicionais (se ele não mencionar bordado, estampa metalizada, etc, não para você criar baseando-se em suposições).
+        - NÃO DESCREVA EM HIPÓTESE ALGUMA: bordados E inscrições das estampas, SALVO EXCEÇÕES ONDE ESTES DETALHES FOREM INFORMADOS PELO USUÁRIO NAS INFORMAÇÕES TEXTUAIS.
         
         Você receberá as informações da seguinte forma:
         
