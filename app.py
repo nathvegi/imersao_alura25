@@ -117,7 +117,7 @@ def agente_imagem(imagem_produto_bytes):
            - Cor(es) predominante(s) e secundárias.
            - Formato/modelagem (ex: justo, solto, longo, curto, regata, manga longa, manga curta, decote V, gola redonda).
            - Material aparente/textura (ex: algodão, seda, liganete, malha, flanela, cetim, liso, texturizado, com brilho).
-           - Detalhes de design (ex: estampas temáticas de dormir, bordados, botões, zíperes, rendas, laços, bolsos, listras, poás).
+           - Detalhes de design (ex: botões, zíperes, rendas, laços, bolsos).
            - Quaisquer outros detalhes relevantes para a identificação do produto.
         
         2 - Informações demográficas (se aplicável):
@@ -128,6 +128,7 @@ def agente_imagem(imagem_produto_bytes):
             - Não descreva o que o modelo está calçando. O foco é exclusivamente na roupa de dormir.
             - Evite descrições subjetivas ou opinativas (ex: "bonito", "confortável", "elegante").
             - Mantenha a descrição objetiva e factual.
+            - Não descreva bordados, inscrições das estampas e outros detalhes mais técnicos se baseando na imagem, pois esta pode aparentar uma coisa que não é (quando houverem esses detalhes, o usuário vai informar no próximo agente que é o Analista de Imagem Enriquecido e Redator de Descrições.
             - A descrição deve ser concisa e direta, listando as características principais de forma clara e organizada.
 
         Exemplo de saída esperada:
@@ -163,6 +164,9 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
         - Valorização de Detalhes Não-Visíveis: Dê especial atenção e destaque a informações que não são perceptíveis apenas pela imagem, mas que foram mencionadas nos dados textuais.
         - Linguagem Fluida e Focada no Cliente: Formule uma descrição contínua, natural e fácil de ler, que ajude o cliente da Useveggi a entender o produto de forma abrangente e atraente, sempre alinhada ao tom da marca de vestuário de dormir.
         - Relevância para Vestuário de Dormir: Mantenha a descrição focada nos atributos e benefícios mais importantes para produtos de dormir (ex: conforto, respirabilidade, durabilidade, caimento, sensibilidade da pele, etc.).
+
+        Exclusões:
+        - Não descreva bordados, inscrições das estampas e outros detalhes mais técnicos baseando em suposições. Este tipo de detalhe será fornecido EXCLUSIVAMENTE pelo usuário nas informações textuais adicionais (se ele não mencionar bordado, estampa metalizada, etc, não para você criar baseando-se em suposições).
         
         Você receberá as informações da seguinte forma:
         
