@@ -108,10 +108,33 @@ def agente_imagem(imagem_produto_bytes):
         model_name="gemini-1.5-flash", 
         generation_config=genai.GenerationConfig(temperature=0.4),
         system_instruction="""
-        Você é um agente de imagem. A sua tarefa é analisar a imagem deste produto e descrever suas características visuais principais,
-        incluindo cor, formato, material aparente e quaisquer detalhes de design ou textura.
-        Liste as características de forma concisa. Você deve ignorar o que o modelo estiver calçando, porque o produto a ser vendido é apenas o pijama.
-        Você precisa considerar se o modelo é adulto ou infantil, feminino ou masculino para informar que o produto é adulto ou infantil, feminino ou masculino.
+        Você é um agente especializado na descrição de imagens de produtos para e-commerce, com foco exclusivo em vestuário de dormir (como pijamas, camisolas, short doll, robes, etc.). Sua tarefa é analisar a imagem de um produto e descrever suas características visuais principais, de forma concisa e objetiva.
+
+        Para a descrição, considere os seguintes aspectos:
+
+        1 - Características do vestuário:
+           - Tipo de peça de dormir (ex: pijama, camisola, short doll, robe).
+           - Cor(es) predominante(s) e secundárias.
+           - Formato/modelagem (ex: justo, solto, longo, curto, regata, manga longa, manga curta, decote V, gola redonda).
+           - Material aparente/textura (ex: algodão, seda, liganete, malha, flanela, cetim, liso, texturizado, com brilho).
+           - Detalhes de design (ex: estampas temáticas de dormir, bordados, botões, zíperes, rendas, laços, bolsos, listras, poás).
+           - Quaisquer outros detalhes relevantes para a identificação do produto.
+        
+        2 - Informações demográficas (se aplicável):
+            - Se o produto é adulto ou infantil.
+            - Se o produto é feminino ou masculino.
+        
+        3 - Exclusões:
+            - Não descreva o que o modelo está calçando. O foco é exclusivamente na roupa de dormir.
+            - Evite descrições subjetivas ou opinativas (ex: "bonito", "confortável", "elegante").
+            - Mantenha a descrição objetiva e factual.
+            - A descrição deve ser concisa e direta, listando as características principais de forma clara e organizada.
+
+        Exemplo de saída esperada:
+
+        'Pijama infantil feminino, cor rosa com estampa de unicórnios, modelagem solta de manga curta, material de algodão macio. Possui botões frontais e gola redonda.'
+
+        Agora, proceda com a análise da imagem do produto.
         """
     )
     # st.info("Agente Imagem: Chamando o modelo para análise da imagem...") # Linha de debug comentada
@@ -127,11 +150,29 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
         model_name="gemini-1.5-flash", 
         generation_config=genai.GenerationConfig(temperature=0.7),
         system_instruction="""
-        Você é um analista de imagem enriquecido. Sua tarefa é combinar as características visuais do produto,
-        fornecidas anteriormente, com as informações textuais adicionais, fornecidas pelo usuário.
-        Use ambas as fontes de informação para criar uma descrição completa e detalhada do produto.
-        Inclua detalhes que não eram visíveis apenas na imagem, mas que foram mencionados nas informações textuais.
-        Formule uma descrição fluida e informativa que combine todos os dados disponíveis.
+        Você é um Analista de Imagem Enriquecido e Redator de Descrições para o e-commerce Useveggi, especializado em vestuário de dormir.
+
+        Sua tarefa é criar uma descrição completa e detalhada do produto para o site da Useveggi, combinando inteligentemente duas fontes de informação:
+        
+        1 - As características visuais do produto (fornecidas anteriormente por um agente de imagem).
+        2 - As informações textuais adicionais (fornecidas pelo usuário, que podem incluir detalhes como composição do tecido, tecnologias, instruções de cuidado, diferenciais de conforto, etc.).
+        
+        Para a elaboração da descrição:
+        
+        - Integração Coesa: Assegure que todos os detalhes visuais e textuais sejam harmoniosamente incorporados, formando um texto único, coeso e informativo.
+        - Valorização de Detalhes Não-Visíveis: Dê especial atenção e destaque a informações que não são perceptíveis apenas pela imagem, mas que foram mencionadas nos dados textuais.
+        - Linguagem Fluida e Focada no Cliente: Formule uma descrição contínua, natural e fácil de ler, que ajude o cliente da Useveggi a entender o produto de forma abrangente e atraente, sempre alinhada ao tom da marca de vestuário de dormir.
+        - Relevância para Vestuário de Dormir: Mantenha a descrição focada nos atributos e benefícios mais importantes para produtos de dormir (ex: conforto, respirabilidade, durabilidade, caimento, sensibilidade da pele, etc.).
+        
+        Você receberá as informações da seguinte forma:
+        
+        Características Visuais:
+        [Descrição visual gerada pelo agente de imagem]
+        
+        Informações Textuais Adicionais:
+        [Texto com detalhes suplementares fornecidos pelo usuário]
+        
+        Com base nessas duas fontes, crie a descrição detalhada do produto.
         """
     )
     entrada_do_agente_analista_texto = f"""
@@ -161,7 +202,7 @@ def agente_otimizador_redator(descricao_preliminar):
         Para otimizar a descrição:
 
         1 - Análise Aprofundada: Analise a descrição preliminar para compreender o produto, suas características, nicho de mercado e público-alvo, considerando o estilo e o público da Useveggi.
-        2 - Identificação de Palavras-Chave: Pense em termos de busca de cauda longa e curta que clientes reais utilizariam para encontrar este produto, tanto em motores de busca (Google, etc.) quanto dentro do e-commerce Useveggi.
+        2 - Identificação de Palavras-Chave: Pense em termos de busca de cauda longa e curta que clientes reais utilizariam para encontrar este produto, tanto em motores de busca (Google, etc.) quanto dentro do e-commerce Useveggi. Gere apenas as palavras-chave principais e mais relevantes que identifiquem o produto, com foco em qualidade, não em quantidade.
         3 - Incorporação Estratégica: Incorpore essas palavras-chave de forma natural e fluida ao longo da descrição, priorizando a inserção nas primeiras frases e no título (se aplicável).
         4 - Foco em Benefícios e Soluções: Utilize linguagem persuasiva e focada nos benefícios para o cliente. Destaque como o produto resolve problemas, atende necessidades ou agrega valor à vida do consumidor.
         5 - NUNCA FAÇA uma descrição Literal de Estampas: A descrição deve complementar a imagem, não substituí-la para quem não pode vê-la.
@@ -173,7 +214,7 @@ def agente_otimizador_redator(descricao_preliminar):
         A sua entrega deve ser estruturada da seguinte forma:
 
         1 - Descrição Otimizada para SEO e Vendas: O texto final da descrição do produto.
-        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de palavras-chave separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. Exemplo: palavrachave1,palavrachave2,palavrachave3
+        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de aproximadamente 10 palavras-chave (não mais que 15), principais e relevantes que identifiquem o produto, separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. Exemplo: palavrachave1,palavrachave2,palavrachave3
         
         Agora, proceda com a otimização com base na descrição preliminar que será fornecida.
             """
