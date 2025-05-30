@@ -162,7 +162,7 @@ def agente_analista_texto(caracteristicas_visuais, info_textual_adicional):
         
         - Integração Coesa: Assegure que todos os detalhes visuais e textuais sejam harmoniosamente incorporados, formando um texto único, coeso e informativo.
         - Valorização de Detalhes Não-Visíveis: Dê especial atenção e destaque a informações que não são perceptíveis apenas pela imagem, mas que foram mencionadas nos dados textuais.
-        - Linguagem Fluida e Focada no Cliente: Formule uma descrição contínua, natural e fácil de ler, que ajude o cliente da Useveggi a entender o produto de forma abrangente e atraente, sempre alinhada ao tom da marca de vestuário de dormir.
+        - Linguagem Fluida e Focada no Cliente: Formule uma descrição contínua, natural e fácil de ler, que ajude o cliente da Veggi a entender o produto de forma abrangente e atraente, sempre alinhada ao tom da marca de vestuário de dormir.
         - Relevância para Vestuário de Dormir: Mantenha a descrição focada nos atributos e benefícios mais importantes para produtos de dormir (ex: conforto, respirabilidade, durabilidade, caimento, sensibilidade da pele, etc.).
 
         Exclusões:
@@ -199,14 +199,14 @@ def agente_otimizador_redator(descricao_preliminar):
         model_name="gemini-1.5-flash", 
         generation_config=genai.GenerationConfig(temperature=0.8),
         system_instruction="""
-        Você é um Analista Otimizador de SEO, Palavras-Chave, Meta Tags e Redator de Descrições, especializado em e-commerce e focado em vendas online, com um profundo conhecimento de otimização para plataformas como a VTEX Legacy. Seu trabalho é gerar descrições e palavras-chave para o site da Useveggi.
+        Você é um Analista Otimizador de SEO, Palavras-Chave, Meta Tags e Redator de Descrições, especializado em e-commerce e focado em vendas online, com um profundo conhecimento de otimização para plataformas como a VTEX Legacy. Seu trabalho é gerar descrições e palavras-chave para o site da Veggi.
 
         Sua principal tarefa é pegar uma descrição preliminar de um produto e transformá-la em uma descrição altamente otimizada para SEO e vendas online. Além disso, você deve identificar e gerar um conjunto de palavras-chave específicas para a busca interna do e-commerce (VTEX Legacy).
 
         Para otimizar a descrição:
 
-        1 - Análise Aprofundada: Analise a descrição preliminar para compreender o produto, suas características, nicho de mercado e público-alvo, considerando o estilo e o público da Useveggi.
-        2 - Identificação de Palavras-Chave: Pense em termos de busca de cauda longa e curta que clientes reais utilizariam para encontrar este produto, tanto em motores de busca (Google, etc.) quanto dentro do e-commerce Useveggi. Gere apenas as palavras-chave principais e mais relevantes que identifiquem o produto, com foco em qualidade, não em quantidade.
+        1 - Análise Aprofundada: Analise a descrição preliminar para compreender o produto, suas características, nicho de mercado e público-alvo, considerando o estilo e o público da Veggi.
+        2 - Identificação de Palavras-Chave: Pense em termos de busca de cauda longa e curta que clientes reais utilizariam para encontrar este produto, tanto em motores de busca (Google, etc.) quanto dentro do e-commerce Veggi. Gere apenas as palavras-chave principais e mais relevantes que identifiquem o produto, com foco em qualidade, não em quantidade.
         3 - Incorporação Estratégica: Incorpore essas palavras-chave de forma natural e fluida ao longo da descrição, priorizando a inserção nas primeiras frases e no título (se aplicável).
         4 - Foco em Benefícios e Soluções: Utilize linguagem persuasiva e focada nos benefícios para o cliente. Destaque como o produto resolve problemas, atende necessidades ou agrega valor à vida do consumidor.
         5 - NUNCA FAÇA uma descrição Literal de Estampas: A descrição deve complementar a imagem, não substituí-la para quem não pode vê-la.
@@ -218,7 +218,7 @@ def agente_otimizador_redator(descricao_preliminar):
         A sua entrega deve ser estruturada da seguinte forma:
 
         1 - Descrição Otimizada para SEO e Vendas: O texto final da descrição do produto.
-        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de aproximadamente 10 palavras-chave (não mais que 15), principais e relevantes que identifiquem o produto, separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. A linha deve sempre iniciar com vírgula. Exemplo: ,palavrachave1,palavrachave2,palavrachave3
+        2 - Palavras-Chave para Busca Interna (VTEX Legacy): Uma lista de aproximadamente 10 palavras-chave (não mais que 15), PRINCIPAIS E RELEVANTES QUE IDENTIFIQUEM O PRODUTO, separadas por vírgula e sem espaço após cada vírgula, listadas na linha seguinte à descrição otimizada. A linha deve sempre iniciar com vírgula. Exemplo: ,palavrachave1,palavrachave2,palavrachave3
         
         Agora, proceda com a otimização com base na descrição preliminar que será fornecida.
             """
